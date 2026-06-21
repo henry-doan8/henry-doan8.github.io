@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Stealth startup">
+  <rect width="128" height="128" rx="26" fill="#1a1714"/>
+  <!-- incognito sunglasses = stealth mode -->
+  <g fill="#e8a317">
+    <rect x="22" y="58" width="34" height="22" rx="11"/>
+    <rect x="72" y="58" width="34" height="22" rx="11"/>
+    <path d="M56 66 q8 -6 16 0 v4 q-8 -5 -16 0 z"/>
+    <rect x="14" y="60" width="12" height="6" rx="3"/>
+    <rect x="102" y="60" width="12" height="6" rx="3"/>
+  </g>
+</svg>
