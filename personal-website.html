@@ -165,6 +165,13 @@
       overflow: hidden;
       box-sizing: border-box;
     }
+    /* Morrison Foerster: shrink + invert to white-on-black */
+    .role__logo--mofo {
+      object-fit: contain;
+      background: #ffffff;
+      padding: 11px;
+      filter: invert(1);
+    }
     .role__dates {
       display: block;
       font-size: 0.78rem;
@@ -333,7 +340,7 @@
         </div>
 
         <div class="role">
-          <img class="role__logo" src="images/logos/mofo.png" alt="Morrison Foerster logo" />
+          <img class="role__logo role__logo--mofo" src="images/logos/mofo.png" alt="Morrison Foerster logo" />
           <div>
             <p class="role__dates">May 2025 — August 2025</p>
             <p class="role__title">AI Business Development Intern</p>
