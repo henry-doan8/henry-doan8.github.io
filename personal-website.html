@@ -204,6 +204,21 @@
       transform: translateY(-3px);
       box-shadow: 0 18px 36px -24px rgba(26, 23, 20, 0.45);
     }
+    /* Clickable card (links to a PDF) */
+    a.card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+    }
+    a.card:hover { border-color: var(--accent); }
+    a.card .card__title { display: inline-flex; align-items: center; gap: 10px; }
+    a.card .card__arrow {
+      font-size: 1rem;
+      color: var(--accent);
+      transition: transform 0.18s ease;
+    }
+    a.card:hover .card__arrow { transform: translate(3px, -3px); }
     .card__title {
       font-family: "Fraunces", serif;
       font-weight: 500;
@@ -369,10 +384,10 @@
         <span class="section__num">02</span>
         <h2 class="section__title">Working Papers</h2>
       </div>
-      <article class="card">
-        <span class="card__tag">Working Paper</span>
-        <h3 class="card__title">AI's Compute and Labor Problem</h3>
-      </article>
+      <a class="card" href="papers/ais-compute-and-labor-problem.pdf" target="_blank" rel="noopener">
+        <span class="card__tag">Working Paper · PDF</span>
+        <h3 class="card__title">AI's Compute and Labor Problem<span class="card__arrow">&#8599;</span></h3>
+      </a>
     </section>
   </main>
 
