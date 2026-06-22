@@ -416,7 +416,7 @@
       <div class="contact">
         <h2>Chat with me</h2>
         <p>Have a question or want to connect? Drop me a note.</p>
-        <form action="https://formsubmit.co/henrydoan25398@gmail.com" method="POST">
+        <form id="contact-form" action="https://formsubmit.co/henrydoan25398@gmail.com" method="POST">
           <div class="field">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" required />
@@ -429,7 +429,8 @@
             <label for="message">Message</label>
             <textarea id="message" name="message" rows="4" required></textarea>
           </div>
-          <button type="submit" class="btn">Send message</button>
+          <button type="submit" class="btn" id="send-btn">Send message</button>
+          <p class="form-note" id="form-status"></p>
         </form>
       </div>
     </section>
@@ -441,6 +442,50 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Limit contact submissions to 3 per browser (soft, client-side limit)
+    (function () {
+      var MAX = 3;
+      var KEY = "hd_msg_count";
+      var form = document.getElementById("contact-form");
+      var btn = document.getElementById("send-btn");
+      var status = document.getElementById("form-status");
+      if (!form) return;
+
+      var count = parseInt(localStorage.getItem(KEY) || "0", 10);
+      if (isNaN(count) || count < 0) count = 0;
+
+      function lock() {
+        btn.disabled = true;
+        btn.textContent = "Message limit reached";
+        btn.style.opacity = "0.5";
+        btn.style.cursor = "not-allowed";
+        Array.prototype.forEach.call(form.querySelectorAll("input, textarea"), function (el) {
+          el.disabled = true;
+        });
+        status.textContent = "You've reached the limit of " + MAX + " messages. Thanks for reaching out!";
+      }
+
+      function refresh() {
+        if (count >= MAX) {
+          lock();
+        } else {
+          status.textContent = (MAX - count) + " of " + MAX + " messages remaining.";
+        }
+      }
+
+      refresh();
+
+      form.addEventListener("submit", function (e) {
+        if (count >= MAX) {
+          e.preventDefault();
+          lock();
+          return;
+        }
+        count += 1;
+        localStorage.setItem(KEY, String(count));
+      });
+    })();
   </script>
 </body>
 </html>
